@@ -1,0 +1,29 @@
+html, body {
+  height: 100%;
+
+  font-family: 'Source Sans Pro', helvetica, arial;
+}
+
+body {
+  background-color: #34495E;
+  color: #fefefe;
+}
+
+div.full-height {
+  height: 100%;
+}
+
+h1#time {
+  font-weight: 300;
+  display: block;
+  font-size: 5em;
+
+  text-align: center;
+  padding: 1em 0 0 0;
+}
+
+h2#date {
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.25em;
+}
