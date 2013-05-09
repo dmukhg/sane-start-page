@@ -9,6 +9,19 @@ var NodeView = function (bookmarkTreeNode) {
     // Folder node
     a.href = '#id'
     li.className = 'folder';
+
+    // Create a pin button and push that onto the li
+    var pin = document.createElement('a');
+    pin.className = 'pin';
+    pin.href = "#mag:" + bookmarkTreeNode.id;
+    pin.textContent = "Pin as top";
+
+    pin.onclick = function (e) {
+      // Put code here to redraw the View, preferably via an event bus
+      e.stopPropagation();
+    }
+
+    li.appendChild(pin);
  }
 
   a.innerHTML = bookmarkTreeNode.title;

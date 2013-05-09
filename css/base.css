@@ -36,7 +36,7 @@ div#bookmarks-list a {
   display: block;
   color: #fefefe;
   line-height: 1.5em;
-  padding: 0.25em 0 0.25em 0.5em;
+  padding: 0.25em 0.5em 0.25em 0.5em;
 }
 
 div#bookmarks-list a:hover {
@@ -74,3 +74,19 @@ div#bookmarks-list li.folder a {
   font-weight: bold;
 }
 
+a.pin {
+  float: right;
+  display: inline-block;
+
+  font-weight: normal;
+  visibility: hidden;
+}
+
+a.pin:hover {
+  background-color: #7f8c8d;
+  color: #2c3e50 !important;
+}
+
+li.folder:hover a.pin {
+  visibility: visible;
+}
