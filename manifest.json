@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "Sane Start Page",
+  "description": "An aesthetic, productive start page.",
+  "version" : "1.0",
+
+  "permissions": [
+    "https://secure.flicker.com/"
+  ],
+
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  }
+}
