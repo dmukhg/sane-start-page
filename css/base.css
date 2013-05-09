@@ -9,6 +9,10 @@ body {
   color: #fefefe;
 }
 
+.hidden {
+  display: none;
+}
+
 div.full-height {
   height: 100%;
 }
@@ -27,3 +31,46 @@ h2#date {
   font-weight: 400;
   font-size: 1.25em;
 }
+
+div#bookmarks-list a {
+  display: block;
+  color: #fefefe;
+  line-height: 1.5em;
+  padding: 0.25em 0 0.25em 0.5em;
+}
+
+div#bookmarks-list a:hover {
+  text-decoration: none;
+}
+
+div#bookmarks-list ul {
+  margin-left: 1em;
+}
+
+div#bookmarks-list li {
+  transition: background-color 1s;
+  -webkit-transition: background-color 1s;
+ list-style-type: none;
+}
+
+div#bookmarks-list li:hover {
+  transition: background-color 1s;
+  -webkit-transition: background-color 0.2s;
+  background-color: #7f8c8d;
+}
+
+div#bookmarks-list li.folder {
+  margin-left: -1em;
+}
+
+div#bookmarks-list li.folder:hover {
+  transition: background-color 1s;
+  -webkit-transition: background-color 0.2s;
+  background-color: #2c3e50;
+}
+
+div#bookmarks-list li.folder a {
+  color: #e67e22;
+  font-weight: bold;
+}
+
