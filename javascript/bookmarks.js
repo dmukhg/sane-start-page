@@ -37,7 +37,6 @@ var pinClicker = function (e) {
 
 var historyRouter = function (e) {
   // Route "popstate" changes through this bugger
-  console.log(location.pathname);
   if (!active) {
     active = true;
     return;

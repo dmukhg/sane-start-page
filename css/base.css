@@ -34,6 +34,7 @@ h2#date {
 
 h2.bookmarks-heading {
   display: inline-block;
+  font-weight: 400;
 }
 
 a.top-link {
@@ -106,4 +107,41 @@ a.pin:hover {
 
 li.folder:hover a.pin {
   visibility: visible;
+}
+
+div#apps-list {
+  height: 120px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  border-bottom: 1px solid #3498db;
+}
+
+div#apps-list ul {
+  height: 100%;
+
+  white-space: nowrap;
+}
+
+div#apps-list ul li {
+  display: inline-block;
+  vertical-align: center;
+}
+
+div#apps-list ul li img {
+  width: 64px;
+  height: 64px;
+  padding: 16px;
+}
+
+div#apps-list ul li a {
+  display: inline-block;
+  height: 96;
+  width: 96;
+}
+
+div#apps-list ul li a:hover {
+  background-color: #ecf0f1;
+  -webkit-transition: background-color 1s;
 }
