@@ -1,7 +1,23 @@
 // Copyright (c) 2013, Dipanjan Mukherjee
 var treeModel = {
-  'selector': undefined,
-  'tree'    : undefined,
+  'selector' : undefined,
+  'tree'     : undefined,
+  'switchTo' : function (id) {
+    // Creates a new tree view with Id at root. If no id passed, uses bookmarks
+    // root
+    var that = this
+      , setTreeCallback = function(tree) {
+        that.selector.innerHTML = '';  // Clear div
+        that.tree = tree;
+        that.selector.appendChild(TreeView(tree[0]));
+      };
+
+    if (id === undefined) {
+      chrome.bookmarks.getTree(setTreeCallback);
+    } else {
+      chrome.bookmarks.getSubTree(id, setTreeCallback);
+    }
+  }
 };
 
 var NodeView = function (bookmarkTreeNode) {
@@ -23,15 +39,7 @@ var NodeView = function (bookmarkTreeNode) {
     pin.onclick = function (e) {
       e.stopPropagation();
 
-      // Clear the bookmarks view
-      treeModel.selector.innerHTML = '';
-
-      // Insert new bookmark
-      chrome.bookmarks.getSubTree(bookmarkTreeNode.id, function (tree) {
-        treeModel.tree = tree;
-
-        treeModel.selector.appendChild(TreeView(tree[0]));
-      });
+      treeModel.switchTo(bookmarkTreeNode.id);
     }
 
     li.appendChild(pin);
@@ -95,13 +103,7 @@ var TreeView = function (node) {
 
 var setupBookmarks = function (selector) {
   treeModel.selector = document.getElementById(selector);
-
-  chrome.bookmarks.getTree(function (tree) {
-    treeModel.tree = tree;
-    var view = TreeView(treeModel.tree[0]);
-
-    treeModel.selector.appendChild(view);
-  });
+  treeModel.switchTo(); // Without arguments will get root
 };
 
 document.addEventListener('DOMContentLoaded', function () {
