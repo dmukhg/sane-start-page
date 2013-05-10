@@ -1,4 +1,8 @@
 // Copyright (c) 2013, Dipanjan Mukherjee
+var treeModel = {
+  'selector': undefined,
+  'tree'    : undefined,
+};
 
 var NodeView = function (bookmarkTreeNode) {
   // Parses a single item into an li view
@@ -17,8 +21,17 @@ var NodeView = function (bookmarkTreeNode) {
     pin.textContent = "Pin as top";
 
     pin.onclick = function (e) {
-      // Put code here to redraw the View, preferably via an event bus
       e.stopPropagation();
+
+      // Clear the bookmarks view
+      treeModel.selector.innerHTML = '';
+
+      // Insert new bookmark
+      chrome.bookmarks.getSubTree(bookmarkTreeNode.id, function (tree) {
+        treeModel.tree = tree;
+
+        treeModel.selector.appendChild(TreeView(tree[0]));
+      });
     }
 
     li.appendChild(pin);
@@ -81,13 +94,13 @@ var TreeView = function (node) {
 };
 
 var setupBookmarks = function (selector) {
-  var div = document.getElementById(selector);
+  treeModel.selector = document.getElementById(selector);
 
   chrome.bookmarks.getTree(function (tree) {
-    var view = TreeView(tree[0]);
-    console.log(tree);
+    treeModel.tree = tree;
+    var view = TreeView(treeModel.tree[0]);
 
-    div.appendChild(view);
+    treeModel.selector.appendChild(view);
   });
 };
 
