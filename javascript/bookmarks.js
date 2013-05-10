@@ -1,4 +1,6 @@
 // Copyright (c) 2013, Dipanjan Mukherjee
+var active = false; // Flag to offset the history router setup
+
 var treeModel = {
   'selector' : undefined,
   'tree'     : undefined,
@@ -15,6 +17,8 @@ var treeModel = {
     if (id === undefined) {
       chrome.bookmarks.getTree(setTreeCallback);
     } else {
+      // Store in localStorage
+      localStorage.setItem('sane-tab-bookmark-pin-id', id);
       chrome.bookmarks.getSubTree(id, setTreeCallback);
     }
   }
@@ -33,6 +37,12 @@ var pinClicker = function (e) {
 
 var historyRouter = function (e) {
   // Route "popstate" changes through this bugger
+  console.log(location.pathname);
+  if (!active) {
+    active = true;
+    return;
+  }
+
   var rId = location.pathname.split('root:')[1];
   treeModel.switchTo(rId);
 };
@@ -44,7 +54,6 @@ var NodeView = function (bookmarkTreeNode) {
 
   if (bookmarkTreeNode.url === undefined) {
     // Folder node
-    a.href = '#id'
     li.className = 'folder';
 
     // Create a pin button and push that onto the li
@@ -119,7 +128,14 @@ var TreeView = function (node) {
 
 var setupBookmarks = function (selector) {
   treeModel.selector = document.getElementById(selector);
-  treeModel.switchTo(); // Without arguments will get root
+  pinId = localStorage.getItem('sane-tab-bookmark-pin-id');
+
+  if(pinId === null) {
+    treeModel.switchTo(); // Without arguments will get root
+  } else {
+    treeModel.switchTo("" + pinId);
+  };
+
 };
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -133,4 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     history.go(-1);
   };
+
+  document.getElementById('top').onclick = pinClicker;
 });

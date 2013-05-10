@@ -36,14 +36,14 @@ h2.bookmarks-heading {
   display: inline-block;
 }
 
-a.back {
+a.top-link {
   float: right;
   color: white;
   display: inline-block;
   padding: 0.5em 0.5em;
 }
 
-a.back:hover {
+a.top-link:hover {
   color: white;
   text-decoration: none;
   background-color: #7f8c8d;
