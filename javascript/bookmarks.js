@@ -20,6 +20,23 @@ var treeModel = {
   }
 };
 
+var pinClicker = function (e) {
+  // Manages history.push state
+  history.pushState(null, null, e.target.href);
+
+  var rId = e.target.href.split('root:')[1];
+  treeModel.switchTo(rId);
+
+  e.preventDefault();
+  e.stopPropagation();
+}
+
+var historyRouter = function (e) {
+  // Route "popstate" changes through this bugger
+  var rId = location.pathname.split('root:')[1];
+  treeModel.switchTo(rId);
+};
+
 var NodeView = function (bookmarkTreeNode) {
   // Parses a single item into an li view
   var li = document.createElement('li')
@@ -33,17 +50,16 @@ var NodeView = function (bookmarkTreeNode) {
     // Create a pin button and push that onto the li
     var pin = document.createElement('a');
     pin.className = 'pin';
-    pin.href = "#mag:" + bookmarkTreeNode.id;
+    pin.href = "/root:" + bookmarkTreeNode.id;
     pin.textContent = "Pin as top";
 
-    pin.onclick = function (e) {
-      e.stopPropagation();
-
-      treeModel.switchTo(bookmarkTreeNode.id);
-    }
+    pin.onclick = pinClicker;
 
     li.appendChild(pin);
+ } else {
+   a.href = bookmarkTreeNode.url;
  }
+
 
   a.innerHTML = bookmarkTreeNode.title;
 
@@ -108,4 +124,13 @@ var setupBookmarks = function (selector) {
 
 document.addEventListener('DOMContentLoaded', function () {
   setupBookmarks('bookmarks-list');
+  window.addEventListener('popstate', historyRouter);
+
+  // Listen to the "Undo" button.
+  document.getElementsByClassName('back')[0].onclick = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    history.go(-1);
+  };
 });

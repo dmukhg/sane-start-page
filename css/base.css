@@ -32,6 +32,23 @@ h2#date {
   font-size: 1.25em;
 }
 
+h2.bookmarks-heading {
+  display: inline-block;
+}
+
+a.back {
+  float: right;
+  color: white;
+  display: inline-block;
+  padding: 0.5em 0.5em;
+}
+
+a.back:hover {
+  color: white;
+  text-decoration: none;
+  background-color: #7f8c8d;
+}
+
 div#bookmarks-list a {
   display: block;
   color: #fefefe;
