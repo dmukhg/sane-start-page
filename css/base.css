@@ -1,34 +1,34 @@
 html, body {
-  height: 100%;
+height: 100%;
 
-  font-family: 'Source Sans Pro', helvetica, arial;
+font-family: 'Source Sans Pro', helvetica, arial;
 }
 
 body {
-  background-color: #34495E;
-  color: #fefefe;
+background-color: #34495E;
+color: #fefefe;
 }
 
 .hidden {
-  display: none;
+display: none;
 }
 
 div.full-height {
-  height: 100%;
+height: 100%;
 }
 
 h1#time {
-  font-weight: 300;
-  display: block;
-  font-size: 5em;
+font-weight: 300;
+display: block;
+font-size: 5em;
 
-  text-align: center;
-  padding: 1em 0 0 0;
+text-align: left;
+padding: 1em 0 0 0;
 }
 
 h2#date {
-  text-align: center;
-  font-weight: 400;
+text-align: left;
+font-weight: 400;
   font-size: 1.25em;
 }
 
@@ -144,4 +144,52 @@ div#apps-list ul li a {
 div#apps-list ul li a:hover {
   background-color: #ecf0f1;
   -webkit-transition: background-color 1s;
+}
+
+div#todo-list ul {
+  margin-left: 0;
+}
+
+div#todo-list ul li {
+  list-style-type: none;
+  padding: 0.25em 0.5em;
+
+  margin-right: 2em;
+  transition: background-color 1s;
+  -webkit-transition: background-color 1s;
+}
+
+div#todo-list ul li:hover {
+  transition: background-color 1s;
+  -webkit-transition: background-color 1s;
+  background-color: #7f8c8d;
+
+  list-style-type: none;
+}
+
+div#todo-list ul li .action {
+  visibility: hidden;
+  float: right;
+  display: block;
+  z-index: 9090;
+}
+
+div#todo-list ul li:hover .action {
+  visibility: visible;
+}
+
+div#todo-list ul li:hover .action a {
+  vertical-align: middle;  
+  margin-left: 0.25em;
+  padding: 0.25em;
+  height: 100%;
+  display: inline-block;
+}
+
+div#todo-list ul li:hover .action a:hover {
+  background-color: #333;
+}
+
+div#todo-list ul li.done {
+  color: #ababba;
 }
