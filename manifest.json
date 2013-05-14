@@ -12,5 +12,9 @@
 
   "chrome_url_overrides": {
     "newtab": "newtab.html"
+  },
+
+  "icons": {
+    "128": "images/icon-large.png"
   }
 }
