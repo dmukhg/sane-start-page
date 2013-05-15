@@ -104,7 +104,7 @@
    }
 
 
-    a.innerHTML += bookmarkTreeNode.title;
+    a.innerHTML += bookmarkTreeNode.title === '' ? bookmarkTreeNode.url : bookmarkTreeNode.title;
 
     li.appendChild(a);
     return li;
