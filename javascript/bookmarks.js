@@ -92,11 +92,19 @@
 
       li.appendChild(pin);
    } else {
+     // add the link 
      a.href = bookmarkTreeNode.url;
+
+     // add a favicon
+     var favicon = document.createElement('i');
+     favicon.className = 'bookmark-favicon';
+     favicon.style.backgroundImage = 'url(chrome://favicon/' + bookmarkTreeNode.url + ')';
+     
+     a.appendChild(favicon);
    }
 
 
-    a.innerHTML = bookmarkTreeNode.title;
+    a.innerHTML += bookmarkTreeNode.title;
 
     li.appendChild(a);
     return li;

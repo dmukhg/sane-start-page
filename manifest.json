@@ -7,7 +7,8 @@
 
   "permissions": [
     "bookmarks",
-    "management"
+    "management",
+    "chrome://favicon/"
   ],
 
   "chrome_url_overrides": {
