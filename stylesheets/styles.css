@@ -176,6 +176,11 @@ footer {
   bottom:50px;
 }
 
+p.highlight {
+  background-color: #D1FCCF;
+  padding: 8px;
+}
+
 @media print, screen and (max-width: 960px) {
   
   div.wrapper {
