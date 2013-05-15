@@ -92,6 +92,15 @@ div#bookmarks-list li.folder a {
   font-weight: bold;
 }
 
+i.bookmark-favicon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+
+  vertical-align: middle;
+  margin-right: 0.5em;
+}
+
 a.pin {
   float: right;
   display: inline-block;
