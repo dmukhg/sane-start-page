@@ -3,7 +3,7 @@
 
   "name": "Sane Start Page",
   "description": "An aesthetic, productive start page.",
-  "version" : "1.0",
+  "version" : "1.1",
 
   "permissions": [
     "bookmarks",
