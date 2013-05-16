@@ -11,6 +11,12 @@
     "chrome://favicon/"
   ],
 
+  "icons" : {
+    "128": "/images/icon-128.png",
+    "64": "/images/icon-64.png",
+    "32": "/images/icon-32.png",
+  },
+
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   }
