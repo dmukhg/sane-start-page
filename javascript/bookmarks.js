@@ -76,7 +76,8 @@
   var NodeView = function (bookmarkTreeNode) {
     // Parses a single item into an li view
     var li = document.createElement('li')
-      , a  = document.createElement('a');
+      , a  = document.createElement('a')
+      , button = document.createElement('button');
 
     if (bookmarkTreeNode.url === undefined) {
       // Folder node
@@ -101,12 +102,23 @@
      favicon.style.backgroundImage = 'url(chrome://favicon/' + bookmarkTreeNode.url + ')';
      
      a.appendChild(favicon);
-   }
 
+     button.innerHTML = 'Remove';
+     button.id = 'btn';
+     button.className = 'btn btn-link btn-small';
+     button.addEventListener('click',
+         function () {
+             chrome.bookmarks.remove(bookmarkTreeNode.id);
+             console.log(bookmarkTreeNode.url + ' deleted.');
+             window.location.reload(true);
+         });
+     li.appendChild(button);
+   }
 
     a.innerHTML += bookmarkTreeNode.title === '' ? bookmarkTreeNode.url : bookmarkTreeNode.title;
 
     li.appendChild(a);
+
     return li;
   };
 
